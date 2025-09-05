@@ -27,7 +27,12 @@
     ]
   },
   "dependencies": {
+    "@azure/msal-browser": "^4.22.0",
+    "@azure/msal-react": "^3.0.19",
     "@hookform/resolvers": "^5.2.1",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@radix-ui/react-slot": "^1.2.3",
     "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/vite": "^4.1.12",
     "@tanstack/react-query": "^5.85.3",
@@ -38,6 +43,7 @@
     "clsx": "^2.1.1",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.539.0",
+    "path": "^0.12.7",
     "postcss": "^8.5.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
@@ -53,6 +59,7 @@
     "@antfu/eslint-config": "^5.2.1",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "@eslint-react/eslint-plugin": "^1.53.0",
     "@eslint/js": "^9.33.0",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",

@@ -11,7 +11,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
@@ -19,11 +19,10 @@
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@routes/*": ["src/routes/*"]
-    },
-   
+      "@routes/*": ["src/routes/*"],
+      "@layout/*": ["src/layout/*"]
+    }
   },
   "include": ["src", "vite.config.ts", "vitest.config.ts", "vite-env.d.ts"],
-  "exclude": ["node_modules", "dist", "coverage"],
-  
+  "exclude": ["node_modules", "dist", "coverage"]
 }

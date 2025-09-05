@@ -7,6 +7,7 @@ import Inspect from 'vite-plugin-inspect';
 import { visualizer } from 'rollup-plugin-visualizer';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 
 export default defineConfig({
   plugins: [
@@ -29,6 +30,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      '@': path.resolve(__dirname, './src'),
       '@app': '/src/app',
       '@assets': '/src/assets',
       '@components': '/src/components',
@@ -40,6 +42,7 @@ export default defineConfig({
       '@utils': '/src/utils',
       '@hooks': '/src/hooks',
       '@routes': '/src/routes',
+      '@layout': 'src/layout',
     },
   },
   build: {

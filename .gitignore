@@ -13,6 +13,8 @@ dist-ssr
 *.local
 .vite-inspect
 coverage
+*.d.ts
+*.tgz
 
 # Editor directories and files
 .vscode/*

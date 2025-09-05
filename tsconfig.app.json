@@ -34,7 +34,8 @@
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"],
       "@routes/*": ["src/routes/*"],
-      "types": ["node"]
+      "types": ["node"],
+      "@layout/*": ["src/layout/*"]
     }
   },
   "include": ["src"]

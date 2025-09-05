@@ -5,6 +5,7 @@ import NotFound from '@pages/not-found';
 import About from '@pages/about';
 import Login from '@pages/login';
 import { PrivateRoute } from '@routes/private-routes';
+import { PublicRoute } from '@routes/public-routes';
 
 function App() {
   return (
@@ -28,8 +29,22 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <PublicRoute>
+              <NotFound />
+            </PublicRoute>
+          }
+        />
       </Routes>
     </Router>
   );
