@@ -1,25 +1,29 @@
-import Cookies from 'js-cookie';
 import axios from 'axios';
+
+import { useStorage } from '@hooks/use-storage';
 import { API_BASE_URLS } from './api-config';
 
 const ACCESS_TOKEN_KEY = 'access_token';
 const REFRESH_TOKEN_KEY = 'refresh_token';
 
-export const getAccessToken = (): string | undefined => Cookies.get(ACCESS_TOKEN_KEY);
+const { setStorage, getStorage, removeStorage } = useStorage();
+
+export const getAccessToken = (): string | undefined =>
+  getStorage('cookie', ACCESS_TOKEN_KEY) || undefined;
 
 export const setAccessToken = (token: string) => {
-  Cookies.set(ACCESS_TOKEN_KEY, token, { secure: true, sameSite: 'strict', path: '/' });
+  setStorage('cookie', ACCESS_TOKEN_KEY, token, { secure: true, sameSite: 'strict', path: '/' });
 };
 
-export const getRefreshToken = (): string | undefined => Cookies.get(REFRESH_TOKEN_KEY);
+export const getRefreshToken = (): string | undefined => getStorage('cookie', REFRESH_TOKEN_KEY);
 
 export const setRefreshToken = (token: string) => {
-  Cookies.set(REFRESH_TOKEN_KEY, token, { secure: true, sameSite: 'strict', path: '/' });
+  setStorage('cookie', REFRESH_TOKEN_KEY, token, { secure: true, sameSite: 'strict', path: '/' });
 };
 
 export const clearTokens = () => {
-  Cookies.remove(ACCESS_TOKEN_KEY, { path: '/' });
-  Cookies.remove(REFRESH_TOKEN_KEY, { path: '/' });
+  removeStorage('cookie', ACCESS_TOKEN_KEY, { path: '/' });
+  removeStorage('cookie', REFRESH_TOKEN_KEY, { path: '/' });
 };
 
 /**

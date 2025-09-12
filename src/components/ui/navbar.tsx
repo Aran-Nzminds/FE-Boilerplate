@@ -1,21 +1,22 @@
-import Cookies from 'js-cookie';
-import { Link, useNavigate } from 'react-router-dom';
-import { Menu, Search, Globe } from 'lucide-react';
+import { Globe, Menu, Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Button } from '@components/ui/button';
 import { DropdownMenu } from '@components/ui/dropdown-menu';
 import { Input } from '@components/ui/input';
 import { useAuth } from '@hooks/use-auth';
+import { useStorage } from '@hooks/use-storage';
 
 export default function Navbar() {
   const navigate = useNavigate();
   const { logout } = useAuth();
   const { t, i18n } = useTranslation();
+  const { clearAll } = useStorage();
 
   const handleLogout = () => {
-    localStorage.clear();
-    Object.keys(Cookies.get()).forEach(cookie => Cookies.remove(cookie));
+    clearAll('local');
+    clearAll('cookie');
     logout();
     navigate('/login', { replace: true });
   };

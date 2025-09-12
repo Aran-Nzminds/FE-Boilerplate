@@ -1,33 +1,34 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 import type { ReactNode } from 'react';
 import { IAuthContextType } from '@interface/auth';
+import { useStorage } from './use-storage';
 
 const AuthContext = createContext<IAuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { setStorage, getStorage, removeStorage } = useStorage();
 
   useEffect(() => {
-    const storedAuth = Cookies.get('isAuthorized');
-    if (storedAuth === 'true') {
+    const storedAuth = getStorage<boolean>('cookie', 'isAuthorized', false);
+    if (storedAuth === true) {
       setIsAuthenticated(true);
     }
   }, []);
 
   const login = (token?: string) => {
     setIsAuthenticated(true);
-    Cookies.set('isAuthorized', 'true', { expires: 1 });
+    setStorage('cookie', 'isAuthorized', true);
     if (token) {
-      Cookies.set('access_token', token, { secure: true, sameSite: 'Strict' });
+      setStorage('cookie', 'access_token', token, { secure: true, sameSite: 'Strict' });
     }
   };
 
   const logout = () => {
     setIsAuthenticated(false);
-    Cookies.remove('isAuthorized');
-    Cookies.remove('access_token');
+    removeStorage('cookie', 'isAuthorized');
+    removeStorage('cookie', 'access_token');
   };
 
   return (

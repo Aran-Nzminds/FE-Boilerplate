@@ -1,3 +1,5 @@
+type StorageType = 'local' | 'session' | 'cookie';
+
 interface ICardItem {
   title: string;
   description: string;
@@ -16,4 +18,13 @@ interface IDropdownProps {
   }[];
 }
 
-export { ICardItem, IDropdownProps };
+interface IUseStorageOptions {
+  expires?: number; // for cookies (in days)
+}
+
+interface IUseDebounceOptions {
+  delay?: number;
+  immediate?: boolean;
+}
+
+export { ICardItem, IDropdownProps, StorageType, IUseStorageOptions, IUseDebounceOptions };
