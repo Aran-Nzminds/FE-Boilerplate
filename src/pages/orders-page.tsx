@@ -1,8 +1,8 @@
-import { useOrders } from '@hooks/use-orders';
+import { useOrders } from "@hooks/use-orders";
 
 export function OrdersPage() {
   const { data: orders = [], isLoading, isError, error, refetch } = useOrders();
-  //! If not using hook
+  // ! If not using hook
   //  const {
   //     data: orders = [],
   //     error,
@@ -14,14 +14,30 @@ export function OrdersPage() {
   //     retry: 2,             // retry failed requests
   //     staleTime: 1000 * 60, // cache fresh for 1 minute
   //   });
-  if (isLoading) return <div>Loading orders...</div>;
-  if (isError) return <div>Error: {error?.message}</div>;
+  if (isLoading)
+    return <div>Loading orders...</div>;
+  if (isError) {
+    return (
+      <div>
+        Error:
+        {error?.message}
+      </div>
+    );
+  }
 
   return (
     <div>
       {orders.map(o => (
         <div key={o.id}>
-          Order #{o.id} - {o.status} - ${o.total}
+          Order #
+          {o.id}
+          {" "}
+          -
+          {" "}
+          {o.status}
+          {" "}
+          - $
+          {o.total}
         </div>
       ))}
 

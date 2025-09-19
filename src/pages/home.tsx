@@ -1,32 +1,32 @@
-import { Briefcase, Users, BarChart3, Settings } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { Card, CardContent, CardHeader, CardTitle } from "@components/ui/card";
+import { BarChart3, Briefcase, Settings, Users } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-import { Card, CardContent, CardHeader, CardTitle } from '@components/ui/card';
-import { ICardItem } from '@interface/common';
+import type { ICardItem } from "@interface/common";
 
 const cardItems: ICardItem[] = [
   {
-    title: 'Projects',
+    title: "Projects",
     description:
-      'Manage and track your ongoing projects efficiently. Manage and track your ongoing projects efficiently. Manage and track your ongoing projects efficiently.',
+      "Manage and track your ongoing projects efficiently. Manage and track your ongoing projects efficiently. Manage and track your ongoing projects efficiently.",
     icon: <Briefcase className="h-6 w-6 text-blue-500" />,
   },
   {
-    title: 'Users',
+    title: "Users",
     description:
-      'View, invite, and assign roles to your team members., View, invite, and assign roles to your team members. View, invite, and assign roles to your team members.',
+      "View, invite, and assign roles to your team members., View, invite, and assign roles to your team members. View, invite, and assign roles to your team members.",
     icon: <Users className="h-6 w-6 text-green-500" />,
   },
   {
-    title: 'Reports',
+    title: "Reports",
     description:
-      'Generate insights and performance reports easily.Generate insights and performance reports easily. Generate insights and performance reports easily.',
+      "Generate insights and performance reports easily.Generate insights and performance reports easily. Generate insights and performance reports easily.",
     icon: <BarChart3 className="h-6 w-6 text-purple-500" />,
   },
   {
-    title: 'Settings',
+    title: "Settings",
     description:
-      'Configure preferences and security options.Configure preferences and security options. Configure preferences and security options.',
+      "Configure preferences and security options.Configure preferences and security options. Configure preferences and security options.",
     icon: <Settings className="h-6 w-6 text-orange-500" />,
   },
 ];

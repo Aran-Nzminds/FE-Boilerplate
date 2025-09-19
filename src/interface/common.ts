@@ -1,4 +1,4 @@
-type StorageType = 'local' | 'session' | 'cookie';
+type StorageType = "local" | "session" | "cookie";
 
 interface ICardItem {
   title: string;
@@ -13,7 +13,7 @@ interface IDropdownProps {
     onClick?: () => void;
     disabled?: boolean;
     icon?: React.ReactNode;
-    type?: 'checkbox' | 'radio' | 'default' | 'separator';
+    type?: "checkbox" | "radio" | "default" | "separator";
     checked?: boolean;
   }[];
 }
@@ -27,4 +27,4 @@ interface IUseDebounceOptions {
   immediate?: boolean;
 }
 
-export { ICardItem, IDropdownProps, StorageType, IUseStorageOptions, IUseDebounceOptions };
+export { ICardItem, IDropdownProps, IUseDebounceOptions, IUseStorageOptions, StorageType };

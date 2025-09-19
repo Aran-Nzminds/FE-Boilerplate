@@ -15,4 +15,4 @@ interface IAuthContextType {
   logout: () => void;
 }
 
-export { IUserDetailsProps, IAuthContextType };
+export { IAuthContextType, IUserDetailsProps };

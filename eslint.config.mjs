@@ -1,20 +1,20 @@
-import antfu from '@antfu/eslint-config';
-import globals from 'globals';
+import antfu from "@antfu/eslint-config";
+import globals from "globals";
 
 export default antfu(
   {
-    type: 'app',
+    type: "app",
     react: true,
     typescript: true,
     formatters: true,
     stylistic: {
       indent: 2,
       semi: true,
-      quotes: 'double',
+      quotes: "double",
     },
   },
   {
-    ignores: ['dist', 'node_modules', '.turbo', '.next', 'coverage', '*.min.js'],
+    ignores: ["dist", "node_modules", ".turbo", ".next", "coverage", "*.min.js"],
     languageOptions: {
       ecmaVersion: 2020,
       globals: {
@@ -23,71 +23,60 @@ export default antfu(
       },
     },
     rules: {
-      // TypeScript rules
-      'ts/no-redeclare': 'off',
-      // 'ts/consistent-type-definitions': ['error', 'type'],
-
-      // Console & process
-      'no-console': ['warn'],
-      'node/prefer-global/process': 'off',
-      'node/no-process-env': 'error',
-
-      // Antfu / Unicorn / Perfectionist
-      'antfu/no-top-level-await': 'off',
-
+      "ts/no-redeclare": "off",
+      "no-console": ["warn"],
+      "node/prefer-global/process": "off",
+      "node/no-process-env": "error",
+      "antfu/no-top-level-await": "off",
       // Import sorting & grouping
-      'import/order': [
-        'error',
+      // 'import/order': [
+      //   'error',
+      //   {
+      //     groups: ['builtin', 'external', ['internal', 'parent', 'sibling', 'index'], 'type'],
+      //     pathGroups: [
+      //       {
+      //         pattern: '@types/**',
+      //         group: 'type',
+      //         position: 'after',
+      //       },
+      //       {
+      //         pattern: '@components/**',
+      //         group: 'internal',
+      //         position: 'after',
+      //       },
+      //       {
+      //         pattern: '@utils/**',
+      //         group: 'internal',
+      //         position: 'after',
+      //       },
+      //     ],
+      //     pathGroupsExcludedImportTypes: ['builtin'],
+      //     'newlines-between': 'always',
+      //     alphabetize: { order: 'asc', caseInsensitive: true },
+      //     newlinesBetween: "always"
+      //   },
+      // ],
+
+      // // Sorting with perfectionist
+      "perfectionist/sort-imports": [
+        "error",
         {
-          groups: ['builtin', 'external', ['internal', 'parent', 'sibling', 'index'], 'type'],
-          pathGroups: [
-            {
-              pattern: '@types/**',
-              group: 'type',
-              position: 'after',
-            },
-            {
-              pattern: '@components/**',
-              group: 'internal',
-              position: 'after',
-            },
-            {
-              pattern: '@utils/**',
-              group: 'internal',
-              position: 'after',
-            },
-          ],
-          pathGroupsExcludedImportTypes: ['builtin'],
-          'newlines-between': 'always',
-          alphabetize: { order: 'asc', caseInsensitive: true },
-          newlinesBetween: "always"
+          type: "natural",
+          order: "asc",
+          groups: ["builtin", "external", "type", "internal", "parent", "sibling", "index"],
         },
       ],
-
-      // Sorting with perfectionist
-      'perfectionist/sort-imports': [
-        'error',
+      // Remove this rule as it's causing the error.
+      // 'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
+      "unicorn/filename-case": [
+        "error",
         {
-          type: 'natural',
-          order: 'asc',
-          groups: ['builtin', 'external', 'type', 'internal', 'parent', 'sibling', 'index'],
+          case: "kebabCase",
+          ignore: ["README.md"],
         },
       ],
-
-      // Enforce <Fragment> instead of <>
-      'react/jsx-fragments': ['error', 'element'],
-
-      // Filenames in kebab-case
-      'unicorn/filename-case': [
-        'error',
-        {
-          case: 'kebabCase',
-          ignore: ['README.md'],
-        },
-      ],
-
-      'max-lines': [
-        'error',
+      "max-lines": [
+        "error",
         {
           max: 200,
           skipBlankLines: true,

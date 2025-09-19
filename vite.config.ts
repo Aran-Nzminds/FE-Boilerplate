@@ -1,13 +1,13 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
+import path from "node:path";
+import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
+import { visualizer } from "rollup-plugin-visualizer";
+import Inspect from "vite-plugin-inspect";
 // import { defineConfig } from 'vite';
-import { defineConfig } from 'vitest/config';
-import Inspect from 'vite-plugin-inspect';
-import { visualizer } from 'rollup-plugin-visualizer';
-import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   plugins: [
@@ -15,36 +15,36 @@ export default defineConfig({
     tailwindcss(),
     Inspect({
       build: true,
-      outputDir: '.vite-inspect',
+      outputDir: ".vite-inspect",
     }),
     {
       ...visualizer({
-        filename: './dist/bundle-stats.html',
-        template: 'treemap',
+        filename: "./dist/bundle-stats.html",
+        template: "treemap",
         gzipSize: true,
         brotliSize: true,
         open: true,
       }),
-      apply: 'build',
+      apply: "build",
     },
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@app': '/src/app',
-      '@assets': '/src/assets',
-      '@components': '/src/components',
-      '@features': '/src/features',
-      '@pages': '/src/pages',
-      '@lib': '/src/lib',
-      '@styles': '/src/styles',
-      '@types': '/src/types',
-      '@utils': '/src/utils',
-      '@hooks': '/src/hooks',
-      '@routes': '/src/routes',
-      '@layout': '/src/layout',
-      '@interface': '/src/interface',
-      '@constants': path.resolve(__dirname, './src/constants'),
+      "@": path.resolve(__dirname, "./src"),
+      "@app": "/src/app",
+      "@assets": "/src/assets",
+      "@components": "/src/components",
+      "@features": "/src/features",
+      "@pages": "/src/pages",
+      "@lib": "/src/lib",
+      "@styles": "/src/styles",
+      "@types": "/src/types",
+      "@utils": "/src/utils",
+      "@hooks": "/src/hooks",
+      "@routes": "/src/routes",
+      "@layout": "/src/layout",
+      "@interface": "/src/interface",
+      "@constants": path.resolve(__dirname, "./src/constants"),
 
     },
   },
@@ -53,10 +53,10 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/setupTests.ts',
+    environment: "jsdom",
+    setupFiles: "./src/setupTests.ts",
     coverage: {
-      reporter: ['text', 'json', 'html'], // coverage reports
+      reporter: ["text", "json", "html"], // coverage reports
     },
   },
 });

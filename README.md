@@ -1,6 +1,6 @@
 # TDSG-Frontend
 
-Frontend boilerplate built with **React + TypeScript + Vite**.  
+Frontend boilerplate built with **React + TypeScript + Vite**.
 Includes **ESLint, Prettier, Husky, lint-staged, Vitest, React Query, TailwindCSS**, and other tooling to provide a consistent developer experience.
 
 ---

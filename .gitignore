@@ -15,6 +15,9 @@ dist-ssr
 coverage
 *.d.ts
 *.tgz
+# TypeScript build info
+*.tsbuildinfo
+
 
 # Editor directories and files
 .vscode/*

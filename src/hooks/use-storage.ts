@@ -1,11 +1,11 @@
-import { useCallback } from 'react';
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
+import { useCallback } from "react";
 
-import { IUseStorageOptions, StorageType } from '@interface/common';
+import type { IUseStorageOptions, StorageType } from "@interface/common";
 
 type CookieOptions = Parameters<typeof Cookies.set>[2];
 
-export function useStorage(options: IUseStorageOptions = {}) {
+export function StorageManager(options: IUseStorageOptions = {}) {
   const { expires = 7 } = options; // default 7-day cookie expiry
 
   const storageHandlers = {
@@ -37,14 +37,16 @@ export function useStorage(options: IUseStorageOptions = {}) {
   const setStorage = useCallback(
     <T>(type: StorageType, key: string, value: T, cookieOptions?: CookieOptions) => {
       try {
-        const valueToStore = typeof value === 'string' ? value : JSON.stringify(value);
+        const valueToStore = typeof value === "string" ? value : JSON.stringify(value);
 
-        if (type === 'cookie') {
+        if (type === "cookie") {
           storageHandlers.cookie.set(key, valueToStore, cookieOptions);
-        } else {
+        }
+        else {
           storageHandlers[type].set(key, valueToStore);
         }
-      } catch (error) {
+      }
+      catch (error) {
         console.warn(`Error setting ${type} storage key "${key}":`, error);
       }
     },
@@ -56,15 +58,18 @@ export function useStorage(options: IUseStorageOptions = {}) {
     <T>(type: StorageType, key: string, defaultValue?: T): T | undefined => {
       try {
         const item = storageHandlers[type].get(key);
-        if (item === undefined || item === null) return defaultValue;
+        if (item === undefined || item === null)
+          return defaultValue;
 
         // Attempt to parse JSON, fallback to string
         try {
           return JSON.parse(item) as T;
-        } catch {
+        }
+        catch {
           return item as unknown as T;
         }
-      } catch (error) {
+      }
+      catch (error) {
         console.warn(`Error reading ${type} storage key "${key}":`, error);
         return defaultValue;
       }
@@ -76,12 +81,14 @@ export function useStorage(options: IUseStorageOptions = {}) {
   const removeStorage = useCallback(
     (type: StorageType, key: string, cookieOptions?: CookieOptions) => {
       try {
-        if (type === 'cookie') {
+        if (type === "cookie") {
           storageHandlers.cookie.remove(key, cookieOptions);
-        } else {
+        }
+        else {
           storageHandlers[type].remove(key);
         }
-      } catch (error) {
+      }
+      catch (error) {
         console.warn(`Error removing ${type} storage key "${key}":`, error);
       }
     },
@@ -93,11 +100,13 @@ export function useStorage(options: IUseStorageOptions = {}) {
     try {
       if (type) {
         storageHandlers[type].clear();
-      } else {
+      }
+      else {
         Object.keys(storageHandlers).forEach(t => storageHandlers[t as StorageType].clear());
       }
-    } catch (error) {
-      console.warn('Error clearing storage:', error);
+    }
+    catch (error) {
+      console.warn("Error clearing storage:", error);
     }
   }, []);
 

@@ -1,6 +1,6 @@
-import { Navigate, useLocation } from 'react-router-dom';
-import { useAuth } from '@hooks/use-auth';
-import Layout from '@layout/layout';
+import { useAuth } from "@hooks/use-auth";
+import Layout from "@layout/layout";
+import { Navigate, useLocation } from "react-router-dom";
 
 export function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
